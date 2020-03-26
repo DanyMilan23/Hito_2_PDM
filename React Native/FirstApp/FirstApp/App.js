@@ -5,7 +5,7 @@
  * @format
  * @flow
  */
-
+//Npx react-native run-android
 import React from 'react';
 import {StyleSheet, View, TextInput} from 'react-native';
 
@@ -15,6 +15,10 @@ import Logo from './src/login/logo';
 import User from './src/img/username.png';
 import Pass from './src/img/pass.png';
 import Input from './src/login/input';
+import Button from './src/login/button'
+
+const PASS=1;
+const USER=2;
 
 const App: () => React$Node = () => {
   const [value, onChangeText] = React.useState('Useless Placeholder');
@@ -27,15 +31,21 @@ const App: () => React$Node = () => {
           <Input
             source={User}
             placeholder="Username"
-            secureTextEntry={false}
+            secureTextEntry={true}
             autoCorrect={false}
+            onChangeText={USER=>this.setState({USER})}
           />
            <Input
             source={Pass}
             placeholder="Password"
-            secureTextEntry={false}
+            secureTextEntry={true}
             autoCorrect={false}
+            onChangeText={PASS=>this.setState({PASS})}
           />
+          <Button
+          pass={USER}
+          user={PASS}
+          ></Button>
           
         </View>
       </View>
