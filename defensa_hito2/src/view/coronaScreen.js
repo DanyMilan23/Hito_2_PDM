@@ -31,17 +31,15 @@ class coronaScreen extends Component {
     this._onChange = this._onChange.bind(this);
   }
   _onChange(busqueda){
-      if(busqueda==='confirmado'){
-        console.log(this.state.cbba.conf+this.state.oru.conf+this.state.lpz.conf)
-      }
-      if(busqueda==='posible'){
-         console.log(this.state.cbba.pos+this.state.oru.pos+this.state.lpz.pos)
-      }
+      this.setState(busqueda:busqueda)
   }
   _onPress() {
-    console.log('Presionado');
-    console.log(this.state.username);
-    console.log(this.state.password);
+     if(this.state.busqueda==='confirmado'){
+        console.log(this.state.cbba.conf+this.state.oru.conf+this.state.lpz.conf)
+      }
+      if(this.state.busqueda==='posible'){
+         console.log(this.state.cbba.pos+this.state.oru.pos+this.state.lpz.pos)
+      }
   }
    agregarCochaConf = datos => {
     const cocha = [...this.state.cbba.conf, datos];
