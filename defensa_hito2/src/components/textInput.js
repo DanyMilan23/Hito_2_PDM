@@ -49,7 +49,6 @@ const stylesTextInput = StyleSheet.create({
     width:'30%'
   },
 });
-
 textInputForm.propTypes = {
   placeholder: PropTypes.string.isRequired,
   enunciado:PropTypes.string.isRequired

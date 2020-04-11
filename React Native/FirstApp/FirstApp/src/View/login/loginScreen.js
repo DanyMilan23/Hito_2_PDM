@@ -29,6 +29,7 @@ class loginScreen extends Component {
     this.setState({
       username: username,
     });
+    
   }
   _onChangeTextPassword(password) {
     this.setState({

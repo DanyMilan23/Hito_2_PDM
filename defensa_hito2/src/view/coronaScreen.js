@@ -1,103 +1,89 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-//import ButtonLogin from '../../components/login/button';
-//import TextInputLogin from '../../components/login/textInput';
 import Constants from '../../src/config/constants';
 import Colors from '../../src/config/colors';
 import Logo from '../components/logo'
 import Ciudad from '../components/ciudad'
 import Boton from '../components/button'
 import InputSimple from '../components/input'
-
+import TextInput from '../components/textInput'
 class coronaScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cbba:{
-        conf:'',
-        pos:''
-      },
-      lpz:{
-        conf:'',
-        pos:''
-      },
-      oru:{
-        conf:'',
-        pos:''
-      },
+      cbac:'',
+      cbas:'',
+      lpzc:'',
+      lpzs:'',
+      oruc:'',
+      orus:'',
       busqueda:''
     };
     this._onPress = this._onPress.bind(this);
     this._onChange = this._onChange.bind(this);
   }
-  _onChange(busqueda){
-      this.setState(busqueda:busqueda)
+  _onChange(value){
+      this.setState({busqueda:value}  )
   }
   _onPress() {
-     if(this.state.busqueda==='confirmado'){
-        console.log(this.state.cbba.conf+this.state.oru.conf+this.state.lpz.conf)
-      }
-      if(this.state.busqueda==='posible'){
-         console.log(this.state.cbba.pos+this.state.oru.pos+this.state.lpz.pos)
-      }
+    console.log('press')
+    console.log(this.state)
+    if(this.state.busqueda==='confirmado'){
+        console.log('entro conf')
+        if(this.state.cbac > this.state.lpzc && this.state.cbac > this.state.oruc){
+          console.log("Cochabamba");
+        }
+        else if(this.state.lpzc > this.state.cbac && this.state.lpzc > this.state.oruc){
+           console.log("La Paz");
+        }
+        else{
+           console.log("Oruro");
+        }
+    }
+    if(this.state.busqueda==='posible'){
+        if(this.state.cbas > this.state.lpzs && this.state.cbas > this.state.orus){
+          console.log("Cochabamba");
+        }
+        else if(this.state.lpzs > this.state.cbas && this.state.lpzs > this.state.orus){
+           console.log("La Paz");
+        }
+        else{
+           console.log("Oruro");
+        }
+    }
   }
-   agregarCochaConf = datos => {
-    const cocha = [...this.state.cbba.conf, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+  //cbba
+  agregarCochaConf = datos => {
+    this.setState({cbac:datos})}
   agregarCochaPos = datos => {
-    const cocha = [...this.state.cbba.pos, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+    this.setState({cbas:datos})}
   //lpz
   agregarLpzConf = datos => {
-    const cocha = [...this.state.lpz.conf, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+    this.setState({lpzc:datos})}
   agregarLpzPos = datos => {
-    const cocha = [...this.state.lpz.pos, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+    this.setState({lpzs:datos})}
   //oru
   agregarOruConf = datos => {
-    const cocha = [...this.state.oru.conf, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+    this.setState({oruc:datos})}
   agregarOruPos = datos => {
-    const cocha = [...this.state.oru.pos, datos];
-    this.setState({ 
-      cocha
-    })
-  }
+    this.setState({ orus:datos})}
 
   render() {
     return (
       <>
         <View style={stylesLoginScreen.container}>
           <Logo style={stylesLoginScreen.logo} />
-          
             <Ciudad nombre='Cochabamba' pos={this.agregarCochaPos} conf={this.agregarCochaConf}></Ciudad>
             <Ciudad nombre='La Paz' pos={this.agregarLpzPos} conf={this.agregarLpzConf}></Ciudad>
             <Ciudad nombre='Oruro' pos={this.agregarOruPos} conf={this.agregarOruConf}></Ciudad>
             <InputSimple
               placeholder='Ingrese Busqueda'
+              onChangeText={this._onChange}
             />
             <Boton 
               onPress={this._onPress}
               titleButton='Calcular'
             />
-          
-          
         </View>
       </>
     );
