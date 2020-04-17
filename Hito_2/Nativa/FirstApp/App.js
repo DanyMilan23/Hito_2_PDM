@@ -8,14 +8,14 @@
 //npx react-native run-android
 import React from 'react';
 import LoginScreen from './src/View/login/loginScreen'
-
+import MainNavigator from './src/navigator/mainNavigator';
 
 
 const App: () => React$Node = () => {
   
   return (
     <>
-        <LoginScreen/>
+        <MainNavigator/>
       
     </>
   );

@@ -5,7 +5,7 @@ import {
   Text,
   Image
 } from 'react-native';
-import Logo from '../../img/milan.png'
+import Imagen from '../../config/images'
 
 export default class logo extends Component{
     constructor(props){
@@ -15,7 +15,7 @@ export default class logo extends Component{
         return(
             <>
                 <View style={styles.container}>
-                    <Image source={Logo} style={styles.image}/>
+                    <Image source={Imagen.LOGO} style={styles.image}/>
                     <Text style={styles.text}>
                         AnamneSys
                     </Text>
