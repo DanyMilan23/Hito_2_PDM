@@ -7,7 +7,8 @@ const config={
 const strings={
     PASSWORD:"Password",
     USERNAME:"Username",
-    TITLE_BUTTON:"LogIn",
+    TITLE_BUTTON:"Login",
+    EMAIL:"Email",
 }
 
 export default {

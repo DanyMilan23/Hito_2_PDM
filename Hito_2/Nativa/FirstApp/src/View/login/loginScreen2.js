@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -15,67 +15,71 @@ import DismissKeyboard from '../../components/login/dismissKeyboard';
 import Constants from '../../config/constants';
 import Colors from '../../config/colors';
 import Imagen from '../../config/images';
+import PropTypes from 'prop-types';
 
-class loginScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-    };
-    this._onPress = this._onPress.bind(this);
-    this._onChangeTextUsername = this._onChangeTextUsername.bind(this);
-    this._onChangeTextPassword = this._onChangeTextPassword.bind(this);
-  }
+const loginScreen2 =()=>{
+    const [usuario,guardarUsuario]=useState({
+        user:'',
+        password:''
+    }) 
+    const [errorEmail,guardarErrorEmail]=useState('') 
+    const [errorUsername,guardarerrorUsername]=useState('')      
+    const _validateEmailAddress = () =>{
+        let isValidEmail =Utils.isValidEmail(usuario.user)
+        isValidEmail ? guardarErrorEmail('') : guardarErrorEmail('Email invalido')
+        console.log(usuario)
+    }
+    const _validateUsername = () =>{ 
+        console.log("entro")  
+        let isValidUsername =Utils.isValidField(usuario.password)
+        isValidUsername ? guardarerrorUsername('') : guardarerrorUsername('Username invalido')
+        console.log(isValidUsername)    
+    }
+    const _onPress=()=>{
+        console.log("press")
+    }
 
-  _onPress() {
-    console.log('Presionado');
-    console.log(this.state.username);
-    console.log(this.state.password);
-  }
-  _onChangeTextUsername(username) {
-    this.setState({
-      username: username,
-    });
-  }
-  _onChangeTextPassword(password) {
-    this.setState({
-      password: password,
-    });
-  }
-  _onEndEditing() {
-    console.log('validar')
-  }
-
-  render() {
-    return (
-      <>
+    return(
         <DismissKeyboard>
           <KeyboardAvoidingView
             style={stylesLoginScreen.container}
-            behavior="padding"
+            behavior="height"
             enabled>
             <View style={stylesLoginScreen.container}>
             <SafeAreaView>
               <LogoLogin style={stylesLoginScreen.logo} />
               <View style={stylesLoginScreen.form}>
                 <EmailTextField
-                  onChangeText={this._onChangeTextUsername}
-                  onEndEditing={this._onEndEditing}
+                    error={errorEmail}
+                    onChangeText={(value) => {
+                        guardarUsuario({
+                          ...usuario,
+                          user:value,
+                        });
+                      }}
+                  onEndEditing={_validateEmailAddress}
                   placeholder={Constants.STRINGS.EMAIL}
                   secureTextEntry={false}
                   autoCorrect={false}
                 />
 
                 <TextInputLogin
-                  onChangeText={this._onChangeTextPassword}
+                  onChangeText={(value) => {
+                        
+                        guardarUsuario({
+                          ...usuario,
+                          password: value,
+                        });
+                      }}
+                  error={errorUsername}
                   source={Imagen.PASSWORD}
+                  onEndEditing={_validateUsername}
                   placeholder={Constants.STRINGS.PASSWORD}
                   secureTextEntry={true}
                   autoCorrect={false}
                 />
                 <ButtonLogin
-                  onPress={this._onPress}
+                  onPress={_onPress}
                   titleButton={Constants.STRINGS.TITLE_BUTTON}
                 />
               </View>
@@ -83,19 +87,20 @@ class loginScreen extends Component {
             </View>
           </KeyboardAvoidingView>
         </DismissKeyboard>
-      </>
+
     );
-  }
 }
+loginScreen2.propTypes = {
+
+};
 const stylesLoginScreen = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.blue,
     alignItems: 'center',
-    justifyContent: 'space-between',
+
   },
   logo: {flex: 1, width: '100%', resizeMode: 'contain', alignSelf: 'center'},
   form: {flex: 1, justifyContent: 'center', width: '80%'},
 });
-
-export default loginScreen;
+export default loginScreen2;

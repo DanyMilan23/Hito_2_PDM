@@ -7,7 +7,7 @@
  */
 //npx react-native run-android
 import React from 'react';
-import LoginScreen from './src/View/login/loginScreen'
+import LoginScreen from './src/View/login/loginScreen2'
 import MainNavigator from './src/navigator/mainNavigator';
 
 

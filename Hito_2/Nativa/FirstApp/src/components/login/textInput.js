@@ -11,10 +11,13 @@ class textInputForm extends Component {
   render() {
     return (
       <View>
+        <Text style={stylesTextInput.errorText}>{this.props.error}</Text>
+        <View>
         <Image source={this.props.source} style={stylesTextInput.inlineImg} />
         <TextInput
           onChangeText={this.props.onChangeText}
           style={stylesTextInput.textInput}
+          onEndEditing={this.props.onEndEditing}
           placeholder={this.props.placeholder}
           secureTextEntry={this.props.secureTextEntry}
           autoCorrect={this.props.autoCorrect}
@@ -22,6 +25,8 @@ class textInputForm extends Component {
           underlineColorAndroid="transparent"
         />
       </View>
+      </View>
+        
     );
   }
 }
@@ -43,6 +48,11 @@ const stylesTextInput = StyleSheet.create({
     height: 22,
     left: 10,
     top: 9,
+  },
+  errorText: {
+    fontSize: 12,
+    color: Colors.red,
+    marginHorizontal: 20,
   },
 });
 

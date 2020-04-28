@@ -11,10 +11,10 @@ import Colors from '../../config/colors';
 import Imagen from '../../config/images'
 
 
-function emailTextField({onChangeText,onEndEditing,placeHolder,secureTextEntry,autoCorrect}) {
+function emailTextField({error,onChangeText,onEndEditing,placeHolder,secureTextEntry,autoCorrect}) {
     return (
         <View>
-          <Text style={styles.errorText}/>
+          <Text style={styles.errorText}>{error}</Text>
           <View style={styles.textFieldView}>
             <TextInput style={styles.textField}
             onChangeText={onChangeText}
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   textFieldView: {
     height: Constants.CONFIG.HEADER_HEIGHT * 0.06,
-    width: Constants.CONFIG.SCREEN_WIDTH * 0.85,
+    width: Constants.CONFIG.SCREEN_WIDTH * 0.80,
     borderRadius: 10,
     marginTop: 5,
     marginBottom: 10,
