@@ -5,6 +5,7 @@ import {
   Text,
   SafeAreaView,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import ButtonLogin from '../../components/login/button';
 import TextInputLogin from '../../components/login/textInput';
@@ -16,29 +17,51 @@ import Constants from '../../config/constants';
 import Colors from '../../config/colors';
 import Imagen from '../../config/images';
 import PropTypes from 'prop-types';
+import Fire from '../../plugins/firebase/firebase'
 
-const loginScreen2 =()=>{
+const loginScreen2 =({navigation})=>{
     const [usuario,guardarUsuario]=useState({
         user:'',
         password:''
     }) 
     const [errorEmail,guardarErrorEmail]=useState('') 
-    const [errorUsername,guardarerrorUsername]=useState('')      
+    const [errorPassword,guardarErrorPassword]=useState('')      
     const _validateEmailAddress = () =>{
         let isValidEmail =Utils.isValidEmail(usuario.user)
         isValidEmail ? guardarErrorEmail('') : guardarErrorEmail('Email invalido')
-        console.log(usuario)
+       return isValidEmail
     }
-    const _validateUsername = () =>{ 
-        console.log("entro")  
-        let isValidUsername =Utils.isValidField(usuario.password)
-        isValidUsername ? guardarerrorUsername('') : guardarerrorUsername('Username invalido')
-        console.log(isValidUsername)    
+    const _validatePassword = () =>{ 
+        let  isValidPassword=Utils.isValidField(usuario.password)
+        isValidPassword ? guardarErrorPassword('') : guardarErrorPassword('Password invalido')
+        return isValidPassword
     }
-    const _onPress=()=>{
-        console.log("press")
-    }
+    const _onPress=()=>{ 
+       let emailData =_validateEmailAddress();
+       let passwordData=_validateEmailAddress();
+       if(emailData && passwordData){
+         loginApp(usuario.user,usuario.password);
+       }
+       else{
+         Alert.alert('Hay errores')
+       }
 
+    }
+    const loginApp = (email,password) =>{
+      console.log(email)
+      console.log(password)
+        try {
+          Fire.auth().signInWithEmailAndPassword(email, password).then((user)=>{
+            console.log(user)
+            navigation.navigate('Register');
+            Alert.alert("usuario logeado");
+          }).catch((error)=>{
+            Alert.alert('Error:', error.message)
+          })
+        } catch (error) {
+          Alert.alert('Error:', error.message)
+        }
+    }
     return(
         <DismissKeyboard>
           <KeyboardAvoidingView
@@ -52,6 +75,7 @@ const loginScreen2 =()=>{
                 <EmailTextField
                     error={errorEmail}
                     onChangeText={(value) => {
+                        console.log(value)
                         guardarUsuario({
                           ...usuario,
                           user:value,
@@ -65,15 +89,14 @@ const loginScreen2 =()=>{
 
                 <TextInputLogin
                   onChangeText={(value) => {
-                        
                         guardarUsuario({
                           ...usuario,
                           password: value,
                         });
                       }}
-                  error={errorUsername}
+                  error={errorPassword}
                   source={Imagen.PASSWORD}
-                  onEndEditing={_validateUsername}
+                  onEndEditing={_validatePassword}
                   placeholder={Constants.STRINGS.PASSWORD}
                   secureTextEntry={true}
                   autoCorrect={false}
