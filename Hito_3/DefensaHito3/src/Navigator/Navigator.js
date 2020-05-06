@@ -8,7 +8,7 @@ import Colors from '../config/colors';
 
 const Stack = createStackNavigator();
 
-function mainNavigator() {
+function Navigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -37,4 +37,4 @@ function mainNavigator() {
   );
 }
 
-export default mainNavigator;
+export default Navigator;
