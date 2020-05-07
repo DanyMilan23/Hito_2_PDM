@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
-import Colors from '../Config/Colors';
+import Colors from '../../Config/Colors';
 
 class button extends Component {
   constructor(props) {

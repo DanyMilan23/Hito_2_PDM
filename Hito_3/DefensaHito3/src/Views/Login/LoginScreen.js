@@ -7,16 +7,15 @@ import {
   KeyboardAvoidingView,
   Alert
 } from 'react-native';
-import ButtonLogin from '../../Components/button';
-import TextInputLogin from '../../Components/textInput';
-import EmailTextField from '../../Components/emailTextField';
+import ButtonLogin from '../../Components/Login/button';
+import TextInputLogin from '../../Components/Login/textInput';
+import EmailTextField from '../../Components/Login/emailTextField';
 import Utils from '../../Utils/Utils';
-import LogoLogin from '../../Components/logo';
-import DismissKeyboard from '../../Components/dismissKeyboard';
+import LogoLogin from '../../Components/Login/logo';
+import DismissKeyboard from '../../Components/Login/dismissKeyboard';
 import Constants from '../../Config/Constants';
 import Colors from '../../Config/Colors';
 import Imagen from '../../Config/Images';
-import PropTypes from 'prop-types';
 import Fire from '../../Plugins/firebase/Firebase'
 
 const LoginScreen =({navigation})=>{
@@ -52,8 +51,7 @@ const LoginScreen =({navigation})=>{
       console.log(password)
         try {
           Fire.auth().signInWithEmailAndPassword(email, password).then((user)=>{
-            console.log(user)
-            navigation.navigate('Register');
+            
             Alert.alert("usuario logeado");
           }).catch((error)=>{
             Alert.alert('Error:', error.message)

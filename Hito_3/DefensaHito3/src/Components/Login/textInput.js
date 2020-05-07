@@ -1,7 +1,7 @@
 import React, {Component, useState} from 'react';
 import {StyleSheet, View, TextInput, Text, Image} from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from '../Config/Colors';
+import Colors from '../../Config/Colors';
 
 class textInputForm extends Component {
   constructor(props) {

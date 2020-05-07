@@ -5,7 +5,7 @@ import {
   Text,
   Image
 } from 'react-native';
-import Imagen from '../Config/Images'
+import Imagen from '../../Config/Images'
 
 export default class logo extends Component{
     constructor(props){

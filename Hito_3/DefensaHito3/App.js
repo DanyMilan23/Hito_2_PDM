@@ -15,13 +15,12 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import Login from './src/Views/Screens/Screen_3'
+import MainNavigator from './src/Navigator/Navigator'
 //npx react-native run-android <Login/>
 const App: () => React$Node = () => {
   return (
     <>
-      <Login/>
-      
+      <MainNavigator/>
     </>
   );
 };

@@ -6,9 +6,9 @@ import {
   Image,
   TextInput
 } from 'react-native';
-import Constants from '../Config/Constants';
-import Colors from '../Config/Colors';
-import Imagen from '..//Config/Images'
+import Constants from '../../Config/Constants';
+import Colors from '../../Config/Colors';
+import Imagen from '../../Config/Images'
 
 
 function emailTextField({error,onChangeText,onEndEditing,placeHolder,secureTextEntry,autoCorrect}) {
