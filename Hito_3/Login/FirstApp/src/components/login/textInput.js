@@ -1,7 +1,7 @@
 import React, {Component, useState} from 'react';
 import {StyleSheet, View, TextInput, Text, Image} from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from '../../Config/Colors';
+import Colors from '../../config/colors';
 
 class textInputForm extends Component {
   constructor(props) {
@@ -25,17 +25,17 @@ class textInputForm extends Component {
           underlineColorAndroid="transparent"
         />
       </View>
-      </View>     
+      </View>
+        
     );
   }
 }
 const stylesTextInput = StyleSheet.create({
   textInput: {
-    backgroundColor: Colors.appPrimary,
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
     alignItems: 'center',
     height: 40,
-    borderColor: Colors.black,
-    borderWidth: 1,
+    borderColor: Colors.silver,
     paddingLeft: 40,
     borderRadius: 15,
     borderBottomWidth: StyleSheet.hairlineWidth,
