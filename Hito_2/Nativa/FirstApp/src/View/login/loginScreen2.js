@@ -53,7 +53,7 @@ const loginScreen2 =({navigation})=>{
         try {
           Fire.auth().signInWithEmailAndPassword(email, password).then((user)=>{
             console.log(user)
-            navigation.navigate('Register');
+            navigation.navigate('App');
             Alert.alert("usuario logeado");
           }).catch((error)=>{
             Alert.alert('Error:', error.message)

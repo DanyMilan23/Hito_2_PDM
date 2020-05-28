@@ -9,6 +9,7 @@ const strings={
     USERNAME:"Username",
     TITLE_BUTTON:"Login",
     EMAIL:"Email",
+    ADD_EMAIL:"Escriba su email",
 }
 
 export default {

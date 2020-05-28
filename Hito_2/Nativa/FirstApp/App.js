@@ -7,6 +7,11 @@
  */
 //npx react-native run-android
 import React from 'react';
+ import {decode, encode} from 'base-64'
+
+ if (! global.btoa) {global.btoa = encode}
+
+ if (! global.atob) {global.atob = decode}
 import LoginScreen from './src/View/login/loginScreen2'
 import MainNavigator from './src/navigator/mainNavigator';
 
