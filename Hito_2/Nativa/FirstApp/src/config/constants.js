@@ -8,6 +8,7 @@ const strings={
     PASSWORD:"Password",
     USERNAME:"Username",
     TITLE_BUTTON:"Login",
+    REGISTER:"Registrar",
     EMAIL:"Email",
     ADD_EMAIL:"Escriba su email",
 }

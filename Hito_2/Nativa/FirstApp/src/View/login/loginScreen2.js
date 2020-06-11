@@ -36,7 +36,7 @@ const loginScreen2 =({navigation})=>{
         isValidPassword ? guardarErrorPassword('') : guardarErrorPassword('Password invalido')
         return isValidPassword
     }
-    const _onPress=()=>{ 
+    const _onPressLogin=()=>{ 
        let emailData =_validateEmailAddress();
        let passwordData=_validateEmailAddress();
        if(emailData && passwordData){
@@ -46,6 +46,9 @@ const loginScreen2 =({navigation})=>{
          Alert.alert('Hay errores')
        }
 
+    }
+    const _onPressRegister = () =>{
+      navigation.navigate('Register')
     }
     const loginApp = (email,password) =>{
       console.log(email)
@@ -102,8 +105,12 @@ const loginScreen2 =({navigation})=>{
                   autoCorrect={false}
                 />
                 <ButtonLogin
-                  onPress={_onPress}
+                  onPress={_onPressLogin}
                   titleButton={Constants.STRINGS.TITLE_BUTTON}
+                />
+                <ButtonLogin
+                  onPress={_onPressRegister}
+                  titleButton={Constants.STRINGS.REGISTER}
                 />
               </View>
               </SafeAreaView>

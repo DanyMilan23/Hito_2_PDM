@@ -69,7 +69,7 @@ const mainNavigator = () => {
   const [isLogged, setIsLogged] = React.useState(null);
   return (
     <NavigationContainer>
-      {isLogged !== null ? (<StackScreen/>) : (<DrawerScreen/>)}
+      {isLogged !== null ? (<DrawerScreen/>): (<StackScreen/>)}
     </NavigationContainer>
   );
 };
