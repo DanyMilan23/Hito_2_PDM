@@ -37,6 +37,12 @@ const data = [
     imagen:Imagen.LOGO,
     color: '#F07243',
   },
+  {
+    title: 'Interaccion',
+    text: 'Interacciones en tiempo real',
+    imagen:Imagen.LOGO,
+    color: '#000000',
+  },
 ];
 const App: () => React$Node = () => {
   return (

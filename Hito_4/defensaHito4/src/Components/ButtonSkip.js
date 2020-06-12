@@ -18,7 +18,7 @@ const buttonSkip = ({color, onPress, titleButton}) => {
           borderColor: 'rgba(255,255,255,0.7)',
         }}
         onPress={onPress}>
-        <Text style={{color: '#ffffff', textAlign: 'center', height: 20}}>
+        <Text style={{color: '#ffffff', textAlign: 'center', height: 20,fontSize: 17,}}>
           {titleButton}
         </Text>
       </TouchableOpacity>

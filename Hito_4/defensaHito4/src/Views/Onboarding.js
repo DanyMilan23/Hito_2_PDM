@@ -9,13 +9,13 @@ const Stack = createStackNavigator();
 const OnBoarding = ({data, done}) => {
   //const []=data;
   const [screen, setScreen] = useState(null);
+  const [actual, setActual] = useState(0);
   useEffect(() => {
     const iteracion = (datos, done) => {
       let salida = [];
       for (let i = 0; i < datos.length; i++) {
         let sig = i == datos.length - 1 ? 0 : i + 1;
         let status = i == 0 ? true : false;
-
         salida.push({
           title: datos[i].title,
           text: datos[i].text,
@@ -31,27 +31,29 @@ const OnBoarding = ({data, done}) => {
     };
     iteracion(data, done);
   }, [data]);
+
   return (
-    <View>
+    <>
       {screen != null ? (
-        <View>
+        <>
           {screen.map(sc => (
-            
-            <View>
-            <OnboardingFactory
-              imagen={sc.imagen}
-              textoPrincipal={sc.title}
-              textSecundario={sc.text}
-              
-              color={sc.color}
-            />
-            {console.log(sc)}
-            </View>
+            <>
+              {sc.posicion == actual ? (
+                <OnboardingFactory
+                  imagen={sc.imagen}
+                  textoPrincipal={sc.title}
+                  textSecundario={sc.text}
+                  funcionBoton1={done}
+                  funcionBoton2={()=>{setActual(sc.siguiente);console.log(screen)}}
+                  color={sc.color}
+                />
+              ) : null}
+              {console.log(sc)}
+            </>
           ))}
-          
-        </View>
+        </>
       ) : null}
-    </View>
+    </>
   );
 };
 

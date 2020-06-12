@@ -11,31 +11,32 @@ import {
 import Description from './Description';
 import Footer from './ButtonsFooter';
 
-function OnboardingFactory({
+const OnboardingFactory = ({
   imagen,
   textoPrincipal,
   textSecundario,
   funcionBoton1,
   funcionBoton2,
   color,
-}) {
+}) => {
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor:color,
+        backgroundColor:'#ffffff',
         alignItems: 'center',
       }}>
       <Description
         imagen={imagen}
         text1={textoPrincipal}
         text2={textSecundario}
+        color={color}
       />
       <Footer
         title1="Skip"
         title2="Next"
-        pressPrev={()=>{}}
-        presNext={()=>{}}
+        pressPrev={funcionBoton1}
+        presNext={funcionBoton2}
         color={color}
       />
     </View>

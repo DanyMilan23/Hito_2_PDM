@@ -18,7 +18,7 @@ const buttonNext = ({color, onPress, titleButton}) => {
           borderColor: color,
         }}
         onPress={onPress}>
-        <Text style={{color: color, textAlign: 'center', height: 20}}>
+        <Text style={{color: color, textAlign: 'center', height: 20,fontSize: 17,}}>
           {titleButton}
         </Text>
       </TouchableOpacity>
